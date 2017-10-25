@@ -7,7 +7,7 @@ var App = () => (
     </nav>
     <div className="row">
       <div className="col-md-7">
-        <div>{/* <VideoPlayer /> */}</div>
+        <div><VideoPlayer video={window.exampleVideoData[0]}/></div>
       </div>
       <div className="col-md-5">
         <div><VideoList videos={window.exampleVideoData} /></div>
