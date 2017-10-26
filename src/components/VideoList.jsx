@@ -1,11 +1,11 @@
 const VideoList = (props) => {
 
-
+  console.log(props);
   return (
     <div className="video-list">
      
       {props.videos.map(video => 
-        <VideoListEntry onClick={props.onClick.bind(this)} video={video} />        
+        <VideoListEntry onClick={props.onClick} video={video} />              
       )}
     </div>
   );

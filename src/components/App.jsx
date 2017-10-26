@@ -5,15 +5,16 @@ class App extends React.Component {
     this.state = {
       video: window.exampleVideoData[0]
     };
-    console.log(this.state);
+    
   }
 
   handleClick(data) {
     console.log('clicked! APP function');
-    console.log(data);
+    // console.log(data);
     this.setState({
       video: data
     });
+    
   }  
 
   // renderPlayer() {
