@@ -5,7 +5,7 @@ const VideoList = (props) => {
     <div className="video-list">
      
       {props.videos.map(video => 
-        <VideoListEntry onClick={props.onClick} video={video} />              
+        <VideoListEntry handleClick={props.handleClick} video={video} />              
       )}
     </div>
   );
