@@ -1,6 +1,5 @@
 const VideoList = (props) => {
 
-  console.log(props);
   return (
     <div className="video-list">
      

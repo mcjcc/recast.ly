@@ -3,25 +3,37 @@ class App extends React.Component {
     super(props);
     
     this.state = {
-      video: window.exampleVideoData[0]
-    };
-    
+      video: window.exampleVideoData[0],
+      fetched: false,
+      videos: window.exampleVideoData,
+      searchInput: ''
+    };    
   }
 
   handleClick(data) {
-    console.log('clicked! APP function');
-    // console.log(data);
     this.setState({
       video: data
-    });
-    
+    });    
   }  
 
-  // renderPlayer() {
-  //   // this should listen for the state change
+  handleSearch(data) {
+    this.setState({
+      fetched: !this.state.fetched,
+      videos: data,
+      video: data[0]
+    });
+  }
 
-  //   // and send the clicked on item props to the videoPlayer
-  // }
+  componentWillMount() {
+    
+  }
+
+  componentDidMount() {
+    // App page is the component mounting
+    if (!this.state.fetched) {     
+      this.props.searchYouTube('', this.handleSearch.bind(this));
+    }    
+  }
 
   render () {
 
@@ -29,7 +41,7 @@ class App extends React.Component {
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <div><Search /></div>
+          <div><Search searchYouTube={this.props.searchYouTube.bind(this)} handleSearch={this.handleSearch.bind(this)}/></div>
         </div>
       </nav>
       <div className="row">
@@ -37,7 +49,7 @@ class App extends React.Component {
           <div><VideoPlayer video={this.state.video}/></div>
         </div>
         <div className="col-md-5">
-          <div><VideoList handleClick={this.handleClick.bind(this)} videos={window.exampleVideoData} /></div>        
+          <div><VideoList handleClick={this.handleClick.bind(this)} videos={this.state.videos} /></div>        
         </div>
       </div>
     </div>
