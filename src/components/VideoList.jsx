@@ -1,18 +1,15 @@
-// inputs
-// an array of video entries
-// loop through array to render video entries 
-var VideoList = (props) => {
+const VideoList = (props) => {
+
+
   return (
     <div className="video-list">
+     
       {props.videos.map(video => 
-        <VideoListEntry video={video} />
+        <VideoListEntry onClick={props.onClick.bind(this)} video={video} />        
       )}
     </div>
   );
 };
-
-
-
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
