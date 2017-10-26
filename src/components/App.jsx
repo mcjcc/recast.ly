@@ -3,10 +3,11 @@ class App extends React.Component {
     super(props);
     
     this.state = {
-      video: window.exampleVideoData[0],
       fetched: false,
-      videos: window.exampleVideoData,
-      searchInput: ''
+      video: {},
+      videos: []
+     // video: window.exampleVideoData[0],
+     //  videos: window.exampleVideoData
     };    
   }
 
@@ -25,12 +26,15 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    
+    // App page is the component mounting
+    // if (!this.state.fetched) {     
+    // this.props.searchYouTube('', this.handleSearch.bind(this));
+    // }    
   }
 
   componentDidMount() {
     // App page is the component mounting
-    if (!this.state.fetched) {     
+    if (!this.state.fetched || videos === [] || video === {}) {     
       this.props.searchYouTube('', this.handleSearch.bind(this));
     }    
   }
@@ -41,7 +45,7 @@ class App extends React.Component {
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <div><Search searchYouTube={this.props.searchYouTube.bind(this)} handleSearch={this.handleSearch.bind(this)}/></div>
+          <div><Search searchYouTube={this.props.searchYouTube} handleSearch={this.handleSearch.bind(this)}/></div>
         </div>
       </nav>
       <div className="row">

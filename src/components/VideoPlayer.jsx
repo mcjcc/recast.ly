@@ -1,15 +1,25 @@
-var VideoPlayer = (props) => (
-  
-  <div className="video-player">
-    <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src={'https://www.youtube.com/embed/' + props.video.id.videoId} allowFullScreen></iframe>
+var VideoPlayer = (props) => {  
+    // checks if props.video is empty 
+  if (Object.keys(props.video).length === 0 && props.video.constructor === Object) {
+    return (
+    <div className="video-player">
+      please wait....
     </div>
-    <div className="video-player-details">
-      <h3>{props.video.snippet.title}</h3>
-      <div>{props.video.snippet.description}</div>
-    </div>
-  </div>
-);
+    );
+  } else {
+    return (
+      <div className="video-player">
+        <div className="embed-responsive embed-responsive-16by9">
+          <iframe className="embed-responsive-item" src={'https://www.youtube.com/embed/' + props.video.id.videoId} allowFullScreen></iframe>
+        </div>
+        <div className="video-player-details">
+          <h3>{props.video.snippet.title}</h3>
+          <div>{props.video.snippet.description}</div>
+        </div>
+      </div>
+    );
+  }
+};
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated

@@ -2,17 +2,12 @@
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hasInput: false
-    };
+    
   }
 
   handleSearchInput() {
     console.log($('.form-control')[0].value);
     var searchString = $('.form-control')[0].value;
-    this.setState({
-      hasInput: true
-    });
 
     var request = {max: 5, query: searchString, key: window.YOUTUBE_API_KEY};
 
@@ -35,8 +30,3 @@ class Search extends React.Component {
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 window.Search = Search;
-
-
-
-// on every key up stroke, we are invoking a youtube search
-// after that it will render a new video List.
